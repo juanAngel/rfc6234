@@ -15,12 +15,12 @@ file(GLOB src_test
 LIST(REMOVE_ITEM src ${src_test})
 
 add_library(${PROJECT_NAME} ${src})
-target_link_libraries(shatest ${PROJECT_NAME})
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 
 if(ENABLE_TEST)
     add_executable(shatest ${src_test})
+    target_link_libraries(shatest ${PROJECT_NAME})
 
-    target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 endif()
